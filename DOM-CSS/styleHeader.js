@@ -1,14 +1,13 @@
 /**
  * Created by miracle on 16-11-1.
  */
-function  styleHeader() {
+function  styleHeader(element,value) {
     if(!document.getElementsByTagName) return false;
-    var header = document.getElementsByTagName('h1');
+    var header = document.getElementsByTagName(element);
     var elem;
     for (var i = 0; i<header.length ; i++){
-        elem = getNextElemet(header[i].nextSibling);
-        elem.style.fontWeight = 'bold';
-        elem.style.fontSize = '1.2em';
+        elem =getNextElemet(header[i].nextSibling);
+        addClass(elem,value);
     }
 
 }
@@ -21,4 +20,16 @@ function  getNextElemet(node) {
     }
     return null;
 }
-addLoadEvent(styleHeader);
+function addClass(tag,value) {
+    if(!tag.className){
+        tag.className = value;
+    }else {
+        var newClass = tag.className;
+        newClass +='';
+        newClass +=value;
+        tag.className = newClass;
+    }
+}
+addLoadEvent(function () {
+    styleHeader('h1','intro');
+});

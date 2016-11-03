@@ -10,13 +10,23 @@ function  srtipeTable() {
         rows = table[i].getElementsByTagName('tr');
         for (var j=0 ; j<rows.length;j++){
             if (odd ==true){
-                rows[j].style.backgroundColor = '#ffc';
+                addClass(rows[j],'odd')
                 odd=false;
             }else {
                 odd = true;
             }
         }
 
+    }
+}
+function addClass(tag,value) {
+    if(!tag.className){
+        tag.className = value;
+    }else {
+        var newClass = tag.className;
+        newClass +='';
+        newClass +=value;
+        tag.className = newClass;
     }
 }
 addLoadEvent(srtipeTable);
